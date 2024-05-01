@@ -31,13 +31,11 @@ public class PersonaRepository {
     }
 
     public void editPersona(long id, Persona personaNueva){
-        for (Persona individuo : Personas){
-            if (individuo.getId() == id){
-                int j = Personas.indexOf(individuo);
-                personaNueva.setId(id);
-                Personas.set( j, personaNueva);
-                return;
-            }
+        Persona individuo = getPersonaPorId(id);
+        if(individuo != null){
+            int j = Personas.indexOf(individuo);
+            personaNueva.setId(id);
+            Personas.set( j, personaNueva);
         }
     }
 
@@ -51,12 +49,10 @@ public class PersonaRepository {
     }
 
     public void removePersona(int id){
-        for (Persona individuo : Personas){
-            if (individuo.getId() == id){
-                int j = Personas.indexOf(individuo);
-                Personas.remove(j);
-                return;
-            }
+        Persona individuo = getPersonaPorId(id);
+        if(individuo != null){
+            int j = Personas.indexOf(individuo);
+            Personas.remove(j);
         }
     }
 }
