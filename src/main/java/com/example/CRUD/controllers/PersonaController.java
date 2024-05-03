@@ -21,7 +21,7 @@ public class PersonaController {
         this.personaRepository = personaRepository;
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Persona> listarPersonas(){
         return personaRepository.listarPersonas();
     }
@@ -31,7 +31,7 @@ public class PersonaController {
         return personaRepository.getPersonaPorId(id);
     }
 
-    @PostMapping
+    @PostMapping("/agregar")
     public ResponseEntity<String> addPersona (@RequestBody Persona persona){
         if(personaRepository.emailNoExiste(persona)){
             personaRepository.addPersona(persona);
